@@ -1,7 +1,7 @@
-package com.leobenkel.starspipeline
+package com.thebrains.starspipeline
 
-import com.leobenkel.elasticsearchcommon.{ElasticSearchClient, ElasticSearchWrapper}
-import com.leobenkel.starspipeline.model.Star
+import com.thebrains.elasticsearchcommon.{ElasticSearchClient, ElasticSearchWrapper}
+import com.thebrains.starspipeline.model.Star
 import com.sksamuel.elastic4s.mappings.FieldDefinition
 
 class ElasticSearchConnector extends ElasticSearchWrapper[Star](

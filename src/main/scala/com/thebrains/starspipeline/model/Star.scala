@@ -1,6 +1,6 @@
-package com.leobenkel.starspipeline.model
+package com.thebrains.starspipeline.model
 
-import com.leobenkel.elasticsearchcommon.ElasticSearchDocument
+import com.thebrains.elasticsearchcommon.ElasticSearchDocument
 
 case class StarFromCsv(
   idCl: Option[String],

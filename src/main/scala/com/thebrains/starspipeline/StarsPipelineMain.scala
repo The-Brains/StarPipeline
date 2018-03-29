@@ -1,10 +1,10 @@
-package com.leobenkel.starspipeline
+package com.thebrains.starspipeline
 
-import com.leobenkel.sparkcommon.{SparkJob, SparkMain}
-import com.leobenkel.starspipeline.model.{Star, StarFromCsv}
-import com.leobenkel.utils.Config
+import com.thebrains.sparkcommon.{SparkJob, SparkMain}
+import com.thebrains.starspipeline.model.{Star, StarFromCsv}
+import com.thebrains.utils.Config
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{Dataset, SparkSession}
+import org.apache.spark.sql.SparkSession
 
 import scala.concurrent.ExecutionContext
 import scala.reflect.io.File
