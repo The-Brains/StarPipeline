@@ -2,12 +2,11 @@ package com.thebrains.starspipeline
 
 import com.thebrains.sparkcommon.{SparkJob, SparkMain}
 import com.thebrains.starspipeline.model.{Star, StarFromCsv}
-import com.thebrains.utils.Config
+import com.thebrains.utils.{Config, IoData}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 
 import scala.concurrent.ExecutionContext
-import scala.reflect.io.File
 
 case class StarsPipelineTask(spark: SparkSession)
   extends SparkJob[StarsPipelineConfig](spark) {
@@ -16,18 +15,11 @@ case class StarsPipelineTask(spark: SparkSession)
     import spark.implicits._
     //    log.info(s"The config says: ${config.test}")
 
-    val pathToFile = File(System.getProperty("user.dir") + "/src/main/resources/asu.tsv").toURL.getPath
+    val pathToFile = IoData.getResourcePath("asu.tsv")
     log.info(s"Get file at $pathToFile")
 
-    val data: RDD[Star] = spark
-      .sqlContext
-      .read
-      .format("com.databricks.spark.csv")
-      .option("header", "true")
-      .option("delimiter", "\t")
-      .option("inferSchema", "true")
-      .load(pathToFile)
-      .as[StarFromCsv]
+    val data: RDD[Star] = IoData
+      .readCsv[StarFromCsv](pathToFile, delimiter = "\t")
       .flatMap(_.toStar)
       .rdd
       .keyBy(_.uniqueId)

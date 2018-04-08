@@ -4,7 +4,7 @@ name := "StarPipeline"
 
 version := "0.1"
 
-organization := "com.leobenkel"
+organization := "com.thebrains"
 
 scalaVersion := "2.11.12"
 
